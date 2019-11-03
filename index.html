@@ -53,13 +53,13 @@
     <a class="current" href=".">Home</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#welcome-to-mkdocs">Welcome to MkDocs</a></li>
+    <li class="toctree-l2"><a href="#welcome-to-ros_training">Welcome to Ros_Training</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#commands">Commands</a></li>
+            <li><a class="toctree-l3" href="#ros_melodic">การติดตั้งโปรแกรม ROS_Melodic</a></li>
         
-            <li><a class="toctree-l3" href="#project-layout">Project layout</a></li>
+            <li><a class="toctree-l3" href="#ros">ทดสอบโปรแกรมหลังจาการติดตั้ง ROS</a></li>
         
         </ul>
     
@@ -69,7 +69,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="about.md">About</a>
+    <a class="" href="about/">About</a>
 	    </li>
           
         </ul>
@@ -104,25 +104,77 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
-<p>For full documentation visit <a href="https://mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
+                <h1 id="welcome-to-ros_training">Welcome to Ros_Training</h1>
+<p>โปรแกรมสำหรับดาวร์โหลด    <a href="https://github.com/ohmranger/src">https://github.com/ohmranger/src</a>.</p>
+<h2 id="ros_melodic">การติดตั้งโปรแกรม ROS_Melodic</h2>
+<h4 id="11-ros-ros-terminal-ctrlaltt">1.1 เข้าไปที่เว็บไซต์หลักของ <a href="https://www.ros.org/">ROS</a> และติดตั้งจากคำสั่งของ ROS หรือเปิด Terminal <code>ctrl+alt+T</code> แล้วคัดลอกคำสั่งลงไป</h4>
+<blockquote>
 <ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs help</code> - Print this help message.</li>
+<li>ขั้นเตรียม</li>
 </ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
+</blockquote>
+<pre><code>sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" &gt; /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654` 
+sudo apt update
 </code></pre>
+<blockquote>
+<ul>
+<li>ขั้นติดตั้ง</li>
+</ul>
+</blockquote>
+<pre><code>sudo apt install ros-melodic-desktop-full
+</code></pre>
+<blockquote>
+<ul>
+<li>ทำการ Initialize rosdep</li>
+</ul>
+</blockquote>
+<pre><code>sudo rosdep init
+rosdep update
+</code></pre>
+<blockquote>
+<ul>
+<li>ทำการ Environment setup</li>
+</ul>
+</blockquote>
+<pre><code>echo "source /opt/ros/melodic/setup.bash" &gt;&gt; ~/.bashrc
+source ~/.bashrc
+source /opt/ros/melodic/setup.bash
+</code></pre>
+<blockquote>
+<ul>
+<li>ทำการติดตั้ง Dependencies สำหรับการ building packages</li>
+</ul>
+</blockquote>
+<pre><code>sudo apt install python-rosinstall python-rosinstall-generator python-wstool build-essential
+sudo apt-get install ros-melodic-joy ros-melodic-teleop-twist-joy ros-melodic-teleop-twist-keyboard ros-melodic-laser-proc ros-melodic-rgbd-launch ros-melodic-depthimage-to-laserscan ros-melodic-rosserial-arduino ros-melodic-rosserial-python ros-melodic-rosserial-server ros-melodic-rosserial-client ros-melodic-rosserial-msgs ros-melodic-amcl ros-melodic-map-server ros-melodic-move-base ros-melodic-urdf ros-melodic-xacro ros-melodic-compressed-image-transport ros-melodic-rqt-image-view ros-melodic-navigation ros-melodic-interactive-markers ros-melodic-driver-base ros-melodic-image-transport ros-melodic-image-publisher ros-melodic-vision-msgs ros-melodic-rospy-message-converter ros-melodic-dwb-critics ros-melodic-costmap-queue
+</code></pre>
+<hr />
+<h2 id="ros">ทดสอบโปรแกรมหลังจาการติดตั้ง ROS</h2>
+<h3 id="12-ros-terminal-ctrlaltt">1.2 ทดสอบ ROS  โดยเปิด Terminal ขึ้นมา <code>ctrl+alt+T</code></h3>
+<pre><code>roscore
+</code></pre>
+<blockquote>
+<p>จะปรากฎดภาพดังรูป</p>
+</blockquote>
+<p><img alt="Screenshot" src="img/roscore.png" /></p>
+<div class="admonition note">
+    <p class="first admonition-title">Note</p>
+    <p class="last">
+        หากเกิด ERROR ให้ติดตั้งที่ ROS หลัก
+    </p>
+</div>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="about/" class="btn btn-neutral float-right" title="About">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
   
 
   <hr/>
@@ -147,6 +199,8 @@ docs/
       
       
       
+        <span style="margin-left: 15px"><a href="about/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
     </span>
 </div>
     <script>var base_url = '.';</script>
@@ -158,5 +212,5 @@ docs/
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-11-01 06:14:55
+Build Date UTC : 2019-11-03 07:57:14
 -->
