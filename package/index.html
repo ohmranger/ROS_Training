@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>About - ROS</title>
+  <title>การติดตัง Package - ROS</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "About";
-    var mkdocs_page_input_path = "about.md";
+    var mkdocs_page_name = "\u0e01\u0e32\u0e23\u0e15\u0e34\u0e14\u0e15\u0e31\u0e07 Package";
+    var mkdocs_page_input_path = "package.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -53,17 +53,30 @@
     <a class="" href="..">Home</a>
 	    </li>
           
-            <li class="toctree-l1">
-		
-    <a class="" href="../package/">การติดตัง Package</a>
-	    </li>
-          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">About</a>
+    <a class="current" href="./">การติดตัง Package</a>
     <ul class="subnav">
             
+    <li class="toctree-l2"><a href="#package">การติดตั้งโปรแกรม Package</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#package-hokuyo-sensor-scanner">การติดตั้ง Package ของ  hokuyo sensor scanner</a></li>
+        
+            <li><a class="toctree-l3" href="#product-highlightse-hokuyo-sensor-scanner">Product Highlightse ของ  hokuyo sensor scanner</a></li>
+        
+            <li><a class="toctree-l3" href="#package-hokuyo">ขั้นตอนการติดตั้ง Package Hokuyo</a></li>
+        
+        </ul>
+    
+
     </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">About</a>
 	    </li>
           
         </ul>
@@ -88,7 +101,7 @@
     
       
     
-    <li>About</li>
+    <li>การติดตัง Package</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -98,7 +111,38 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="package">การติดตั้งโปรแกรม Package</h1>
+<h2 id="package-hokuyo-sensor-scanner">การติดตั้ง Package ของ  hokuyo sensor scanner</h2>
+<p><img alt="Screenshot" src="../img/hokuyo_urg_04lx_ug01.jpg" /></p>
+<h2 id="product-highlightse-hokuyo-sensor-scanner">Product Highlightse ของ  hokuyo sensor scanner</h2>
+<p><strong>Description</strong></p>
+<blockquote>
+<ul>
+<li>Hokuyo's URG-04LX-UG01 detectable range is 20mm to 5600mm </li>
+<li>100msec/scan </li>
+<li>5V operating voltage </li>
+<li>240° area scanning range with 0.36° angular resolution </li>
+<li>USB cable not included</li>
+</ul>
+</blockquote>
+<h2 id="package-hokuyo">ขั้นตอนการติดตั้ง Package Hokuyo</h2>
+<ol>
+<li>ให้เข้าไปที่เว็บไซต์ <a href="http://wiki.ros.org/hokuyo_node">http://wiki.ros.org/hokuyo_node</a></li>
+<li>คลิกแหล่งเก็บข้อมูลของโปรแกรม ดังภาพ  หรือคลิกที่ลิงค์ <a href="https://github.com/ros-drivers/hokuyo_node">https://github.com/ros-drivers/hokuyo_node</a>
+<img alt="Screenshot" src="../img/git_hokuyo.png" /></li>
+<li>เปิด Terminal ขึ้นมาโดยกด  <code>ctrl+alt+T</code> แล้วคัดลอกคำสั่งลงไป</li>
+<li></li>
+</ol>
+<pre><code>cd /catkin_ws/src
+git clone https://github.com/ros-drivers/hokuyo_node.git
+cd ..
+catkin_make
+source /devel/setup.bash
+</code></pre>
+
+<ol>
+<li>Run Program ด้วยคำสั่ง</li>
+</ol>
               
             </div>
           </div>
@@ -106,8 +150,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../about/" class="btn btn-neutral float-right" title="About">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../package/" class="btn btn-neutral" title="การติดตัง Package"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -133,8 +179,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../package/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../about/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
