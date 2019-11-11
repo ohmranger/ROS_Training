@@ -36,7 +36,7 @@
 ### 1.2 ทดสอบ ROS  โดยเปิด Terminal ขึ้นมา `ctrl+alt+T`
 
     roscore
->   จะปรากฎดภาพดังรูป
+>จะปรากฎดภาพดังรูป
 
 ![Screenshot](img/roscore.png)
 

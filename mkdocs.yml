@@ -1,6 +1,8 @@
 site_name: ROS
 nav:
     - Home: index.md
+    - การติดตัง Package: package.md
+    - การสร้าง Package : create_package.md
     - About: about.md
 theme:
   name: 'readthedocs'

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>การสร้าง Package - ROS</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u0e01\u0e32\u0e23\u0e2a\u0e23\u0e49\u0e32\u0e07 Package";
+    var mkdocs_page_input_path = "create_package.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> ROS</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../package/">การติดตัง Package</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">การสร้าง Package</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#package-roboteq">การสร้าง Package ควบคุมมอเตอร์ ด้วย Roboteq</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#package-catkin_create">ขั้นตอนการสร้าง Package  ด้วย Catkin_create</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">About</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">ROS</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>การสร้าง Package</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="package-roboteq">การสร้าง Package ควบคุมมอเตอร์ ด้วย Roboteq</h1>
+<h2 id="package-catkin_create">ขั้นตอนการสร้าง Package  ด้วย Catkin_create</h2>
+<p>1.หากคุณต้องการ สร้าง <strong>Paackage</strong> ให้เปิด <strong>Teminal</strong> <code>ctrl+alt+T</code>แล้วพิมพ์คำสั่ง ไปยัง Repository ของ src ใน project workspace</p>
+<pre><code class="s">cd ~/catkin_ws/src
+</code></pre>
+
+<p>2.คำสั่งใช้สำหรับ Create package คือ <code>&lt;catkin_create&gt; &lt;ตั้งชื่อ Package&gt; [depend1] [depend2] [depend3]</code> โดย depend คือ การระบุหรืออ้างอิงไลบาร์ที่ต้องการใช้ภายใน Package</p>
+<pre><code>catkin_create_pkg roboteq ropy geometry__msgs tf nav_msgs
+</code></pre>
+
+<p>3.catkin จะสร้าง Package ที่ภายในประกอบด้วย </p>
+<pre><code class="s">my_package/
+  src 
+  CMakeLists.txt
+  package.xml 
+</code></pre>
+
+<p>4.เปิดเข้าไปใน src ภายใน package: roboteq แล้วสร้างไพล์ที่มีชื่อว่า roboteq.py</p>
+<pre><code>cd roboteq/src
+touch roboteq.py
+gedit roboteq.py
+</code></pre>
+
+<p>5.คัดลอกโปรแกรมด้านล่าง ลงใน <em>roboteq.py</em> แล้ว <strong>seave</strong> โปรแกรม</p>
+<pre><code class="python">#!/usr/bin/env python
+import rospy
+import serial
+import time
+
+ser = serial.Serial(
+    port='/dev/ttyACM0',
+    baudrate=115200,
+    parity=serial.PARITY_ODD,
+    stopbits=serial.STOPBITS_TWO,
+    bytesize=serial.SEVENBITS)
+ser.isOpen()
+
+def run():
+    rospy.init_node('ohm_roboteq', anonymous=True)
+    rate = rospy.Rate(10) # 10hz
+
+    while not rospy.is_shutdown():
+
+        ser.write('!G 2 1000\r')
+        rospy.loginfo(' Send_data : !G 2 1000')
+        rate.sleep()
+
+if __name__ == '__main__':
+    try:
+        run()
+    except rospy.ROSInterruptException:
+        pass
+
+</code></pre>
+
+<p>6.ให้อนุญาติ file.py ทุกครั้งที่มีการสร้างขึ้นมาใหม่ เพียงครั้งเดียว โดยมีคำสั่งด้านล่าง</p>
+<pre><code>sudo chmod +x roboteq.py
+</code></pre>
+
+<p>7.เชื่อมต่อบอร์ด Roboteq กับเครื่องคอมพิวเตอร์แล้วตรวจสอบว่าเครื่องคอมพิวเตอร์ พบพอร์ตดังกล่าวหรือไม่</p>
+<pre><code class="s">ls -l /dev/ttyACM0
+
+</code></pre>
+
+<blockquote>
+<p>ให้พิมพ์คำสั่งอนุญาติรับส่งผ่านพอร์ด แล้วตรวจสอบอีกครั้ง</p>
+</blockquote>
+<pre><code class="s">sudo chmod 666 /dev/ttyACM0
+ls -l /dev/ttyACM0
+
+</code></pre>
+
+<p>8.ใช้คำสั่ง catkin_make ที่ project workspace แล้วเปิดโปรแกรม ___roscore__</p>
+<pre><code class="s">cd ~/catkin_ws/
+catkin_make
+roscore
+
+</code></pre>
+
+<p>9.ให้เปิด <strong>Teminal</strong> <code>ctrl+alt+T</code>แล้วพิมพ์คำสั่งทดสอบโปรแกรมโดย </p>
+<pre><code>
+rosrun roboteq robotqe.py
+
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../about/" class="btn btn-neutral float-right" title="About">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../package/" class="btn btn-neutral" title="การติดตัง Package"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../package/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../about/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
