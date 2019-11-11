@@ -115,11 +115,11 @@
                 <h1 id="package-roboteq">การสร้าง Package ควบคุมมอเตอร์ ด้วย Roboteq</h1>
 <h2 id="package-catkin_create">ขั้นตอนการสร้าง Package  ด้วย Catkin_create</h2>
 <p>1.หากคุณต้องการ สร้าง <strong>Paackage</strong> ให้เปิด <strong>Teminal</strong> <code>ctrl+alt+T</code>แล้วพิมพ์คำสั่ง ไปยัง Repository ของ src ใน project workspace</p>
-<pre><code class="s">cd /catkin_ws/src
+<pre><code class="s">cd ~/catkin_ws/src
 </code></pre>
 
 <p>2.คำสั่งใช้สำหรับ Create package คือ <code>&lt;catkin_create&gt; &lt;ตั้งชื่อ Package&gt; [depend1] [depend2] [depend3]</code> โดย depend คือ การระบุหรืออ้างอิงไลบาร์ที่ต้องการใช้ภายใน Package</p>
-<pre><code>catkin_create roboteq ropy geometry__msgs tf nav_msgs
+<pre><code>catkin_create_pkg roboteq ropy geometry__msgs tf nav_msgs
 </code></pre>
 
 <p>3.catkin จะสร้าง Package ที่ภายในประกอบด้วย </p>
@@ -155,8 +155,8 @@ def run():
 
     while not rospy.is_shutdown():
 
-    ser.write('!G 2 1000\r')
-    rospy.loginfo(' Send_data : !G 2 1000')
+        ser.write('!G 2 1000\r')
+        rospy.loginfo(' Send_data : !G 2 1000')
         rate.sleep()
 
 if __name__ == '__main__':
@@ -184,8 +184,16 @@ ls -l /dev/ttyACM0
 
 </code></pre>
 
-<p>8.ทดสอบโปรแกรมโดย ให้พิมพ์คำสั่งอนุญาติรับส่งผ่านพอร์ด แล้วตรวจสอบอีกครั้ง</p>
-<pre><code>rosrun roboteq robotqe.py
+<p>8.ใช้คำสั่ง catkin_make ที่ project workspace แล้วเปิดโปรแกรม ___roscore__</p>
+<pre><code class="s">cd ~/catkin_ws/
+catkin_make
+roscore
+
+</code></pre>
+
+<p>9.ให้เปิด <strong>Teminal</strong> <code>ctrl+alt+T</code>แล้วพิมพ์คำสั่งทดสอบโปรแกรมโดย </p>
+<pre><code>
+rosrun roboteq robotqe.py
 
 </code></pre>
               
